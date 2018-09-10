@@ -35,6 +35,11 @@ class Product extends Model
      * @var int $quantity
      */
     public $quantity;
+    
+    /**
+     * @var string $status
+     */
+    public $status;
 
     /**
      * @var array $price
@@ -74,6 +79,7 @@ class Product extends Model
     {
         $this->name = '';
         $this->quantity = 0;
+        $this->status = '';
         $this->description = '';
 
         $this->loadImport($importXml);
@@ -94,6 +100,8 @@ class Product extends Model
 
         $this->name = trim($xml->Наименование);
         $this->description = trim($xml->Описание);
+        
+        if (isset($xml['Статус'])) $this->status = (string)$xml['Статус'];
 
         $this->sku = trim($xml->Артикул);
         $this->unit = trim($xml->БазоваяЕдиница);

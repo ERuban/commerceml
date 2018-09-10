@@ -257,7 +257,7 @@ class CommerceML
             $import = isset($item['import']) ? $item['import'] : null;
             $offer = isset($item['offer']) ? $item['offer'] : null;
 
-            if (is_null($import) || is_null($offer)) {
+            if (is_null($import) || is_null($offer) || !$import->Группы) {
                 continue;
             }
 
